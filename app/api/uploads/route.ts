@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { File, files } from "@/lib/db/schema";
+import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
