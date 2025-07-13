@@ -1,8 +1,10 @@
+"use client"
+
 import {ThemeProviderProps,ThemeProvider as NextThemeProvide} from "next-themes"
 import {ImageKitProvider} from "imagekitio-next"
 import { HeroUIProvider } from "@heroui/system"
 
-const aunthenticator = async() => {
+const authenticator = async() => {
     try {
         const response = await fetch("/api/imagekit-auth")
         const data = await response.json()
@@ -20,7 +22,7 @@ export interface ProviderProps{
 
 export function Providers({children,themeProp}: ProviderProps){
     return(
-        <ImageKitProvider aunthenticator={aunthenticator} publicKey = {process.env.NEXT_IMAGEKIT_PUBLIC_KEY || ""} urlEndpoint = {process.env.NEXT_IMAGEKIT_URL_ENDPOINT || ""}>
+        <ImageKitProvider authenticator={authenticator} publicKey = {process.env.NEXT_IMAGEKIT_PUBLIC_KEY || ""} urlEndpoint = {process.env.NEXT_IMAGEKIT_URL_ENDPOINT || ""}>
             <HeroUIProvider>{children}</HeroUIProvider>
         </ImageKitProvider>
     )
